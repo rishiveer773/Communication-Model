@@ -17,5 +17,5 @@ function list = four_ary_ask(data)
     end
 
     % Line Coding
-    
+    raised_cosine = linecoding_raisedcos(t,)
 end

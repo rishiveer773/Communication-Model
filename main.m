@@ -13,6 +13,9 @@ short_vector = binary_vector(1:floor(length(binary_vector)/4));
 % disp(length(short_vector));
 % disp(binary_vector);
 
+Ts = 1/fs;
+
+
 % Taking the input from the user to decide which modulation scheme to
 % proceed with
 prompt = "State with which of the following modulation schemes to proceed " + ...
