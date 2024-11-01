@@ -9,8 +9,6 @@ close all;
 audio_normalize = int16(audio * 32767);
 audio_binary = dec2bin(typecast(audio_normalize(:), 'uint16'), 16);
 binary_vector = audio_binary(:);
-short_vector = binary_vector(1:floor(length(binary_vector)/4));
-% disp(length(short_vector));
 % disp(binary_vector);
 
 % Taking the input from the user to decide which modulation scheme to
@@ -19,10 +17,9 @@ prompt = "State with which of the following modulation schemes to proceed " + ..
     "with: 4-ary ASK; 4-ary FSK; BPSK; QPSK type 1; QPSK type 2 or 16-ary QAM";
 name=input(prompt+'\n', 's');
 if name == "4-ary ASK"
-    todo = four_ary_ask(short_vector);
-    % disp(todo);
+    disp("ASK")
 elseif name == "4-ary FSK"
-    todo = four_ary_fsk(short_vector);
+    disp("FSK")
 elseif name == "BPSK"
     disp("BPSK")
 elseif name == "QPSK type 1"
@@ -32,5 +29,5 @@ elseif name == "QPSK type 2"
 elseif name == "16-ary QAM"
     disp("QAM")
 else
-    disp("Wrong input, please try again..")
+    disp("Wrong ")
 end
