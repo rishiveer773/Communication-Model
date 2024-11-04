@@ -15,25 +15,20 @@ short_vector = binary_vector(1:floor(length(binary_vector)/4));
 
 Ts = 1/fs;
 
-
-% Taking the input from the user to decide which modulation scheme to
-% proceed with
-prompt = "State with which of the following modulation schemes to proceed " + ...
-    "with: 4-ary ASK; 4-ary FSK; BPSK; QPSK type 1; QPSK type 2 or 16-ary QAM";
-name=input(prompt+'\n', 's');
-if name == "4-ary ASK"
-    todo = four_ary_ask(short_vector);
-    % disp(todo);
-elseif name == "4-ary FSK"
-    todo = four_ary_fsk(short_vector);
-elseif name == "BPSK"
-    disp("BPSK")
-elseif name == "QPSK type 1"
-    disp("Type 1 QPSK")
-elseif name == "QPSK type 2"
-    disp("Type 2 QPSK")
-elseif name == "16-ary QAM"
-    disp("QAM")
-else
-    disp("Wrong input, please try again..")
+%% Encoding
+% In this step we encode the above generated binary data based on 4-ary ASK
+% modulation
+encoding = [];
+for i = 1:2:length(short_vector)-1
+    a = data(i); 
+    b = data(i+1);
+    if (a == '0') && (b == '0')
+        encoding = [encoding 0];
+    elseif (a == '0') && (b == '1')
+        encoding = [encoding 1];
+    elseif (a == '1') && (b == '0')
+        encoding = [encoding 2];
+    else % (a == '1') && (b == '1')
+        encoding = [encoding 3];
+    end
 end

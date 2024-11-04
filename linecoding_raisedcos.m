@@ -1,4 +1,4 @@
-function x_rc = linecoding_raisedcos(t,Tb,beta)
+sfunction x_rc = linecoding_raisedcos(t,Tb,beta)
     p_rc = @(t) (sin(pi*t/Tb) ./ (pi*t/Tb)) .* (cos(beta*pi*t/Tb) ./ (1 - (2*beta*t/Tb).^2));
     p_rc = @(t) (t >= 0 & t <= Tb) .* p_rc(t);
         
